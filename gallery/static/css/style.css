@@ -1,0 +1,427 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+
+:root {
+    --bg-color: #141414;
+    --text-main: #f0f0f0;
+    --text-muted: #888888;
+    --transparent-black: #000000ba;
+    --accent: #d4af37; /* Um toque de dourado sutil ou prateado */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    height: 80px;
+    background-color: var(--transparent-black);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: transform 0.4s ease;
+}
+
+/* Classe que o JavaScript vai adicionar para esconder a barra */
+.nav-hidden {
+    transform: translateY(-100%);
+}
+.nav-menu {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-logo-img {
+    max-height: 50px; /* Reduzi um pouco para ser mais elegante */
+    width: auto;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+nav .logo {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover { color: var(--accent); }
+
+/* Galeria de Quadros */
+/* Ajuste na galeria para ter espaço após o Hero */
+.gallery-container {
+    max-width: 100vw;
+    
+    /*margin: 50px auto;*/
+    padding: 0 20px;
+    /* O segredo para que a galeria pareça deslizar por cima da imagem */
+    position: relative; 
+    background-color: var(--bg-color); /* Preenchimento escuro */
+    z-index: 2; /* Fica por cima da imagem hero */
+    padding-top: 100px; /* Espaço para respirar */
+}
+
+.quadro-card {
+    display: flex;
+    margin-bottom: 100px;
+    align-items: center;
+    gap: 50px;
+}
+
+/* Alternar a imagem esquerda/direita como no site da Bugatti */
+.quadro-card:nth-child(even) { flex-direction: row-reverse; }
+
+.quadro-img {
+    flex: 0.7;
+    overflow: hidden;
+}
+
+.quadro-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.7s ease;
+}
+
+.quadro-img:hover img {
+    transform: scale(1.05); /* Efeito zoom de luxo */
+}
+
+.quadro-info {
+    flex: 1;
+    padding: 40px;
+}
+
+.quadro-info h2 {
+    font-size: 36px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.quadro-info p {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.quadro-meta {
+    font-size: 14px;
+    letter-spacing: 1px;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.price {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* --- Estilos para as páginas Sobre e Contacto (Bugatti-like) --- */
+
+.elegant-container {
+    max-width: 900px;
+    margin: 100px auto;
+    padding: 0 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+}
+
+.text-block {
+    text-align: center;
+    border-left: 1px solid #222; /* Uma linha muito sutil */
+    padding-left: 50px;
+}
+
+.text-block h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: var(--accent); /* O teu toque de luxo (ex: dourado/prateado) */
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.text-block h2 {
+    font-size: 48px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+.text-block p {
+    color: var(--text-muted);
+    font-size: 16px;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    line-height: 1.8;
+}
+
+/* Estilos específicos de Contacto */
+.contact-block .contact-methods {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 50px;
+    border-top: 1px solid #333;
+    padding-top: 50px;
+}
+
+.contact-item {
+    text-align: left;
+}
+
+.contact-item .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #555; /* Muito discreto */
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contact-item p {
+    font-size: 14px;
+    margin: 0;
+    color: var(--text-main);
+}
+
+.signature {
+    margin-top: 80px !important;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* --- Hero Section (Efeito Luxo Bugatti) --- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    
+    /* Ocupa quase toda a altura da viewport, exceto a navbar */
+    height: 55vh; 
+    overflow: hidden;
+    /* Adiciona uma margem negativa para "subir" e ficar por trás da navbar sutilmente, se desejado */
+    margin-top: -1px; 
+}
+
+.hero-image-wrapper {
+    width: 100%;
+    height: auto;
+    /*max-width: 1400px;*/
+    /* O SEGREDO DO EFEITO FIXO: Funciona como um background fixo */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: -1; /* Fica atrás de tudo */
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    max-height: 80vh;
+    /* Mantém a proporção sem distorcer, preenchendo todo o espaço */
+    object-fit: cover; 
+    object-position: center center;
+}
+
+.hero-content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Para ficar por cima da imagem wrapper */
+}
+/* --- Animação de Revelação (Fade-in) --- */
+
+/* Estado inicial: invisível e ligeiramente descaído para baixo */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+    visibility: hidden;
+}
+
+/* Estado ativo: quando o JavaScript detetar que o elemento entrou no ecrã */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+/* --- Sombra Correta na Hero Section --- */
+.hero-section::after {
+    content: "";
+    position: absolute;
+    bottom: 0; /* Cola a sombra ao fundo da secção e não do ecrã */
+    left: 0;
+    width: 100%;
+    height: 40%; /* Ocupa apenas a parte de baixo da imagem */
+    
+    /* Desvanece do transparente para a cor de fundo do teu site */
+    background: linear-gradient(to bottom, rgba(5, 5, 5, 0) 0%, var(--bg-color) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* =========================================================
+   CSS RESPONSIVO (Tablets e Telemóveis)
+   ========================================================= */
+
+/* --- Breakpoint 1: Tablets e Ecrãs Pequenos (até 1024px) --- */
+@media (max-width: 1024px) {
+    nav { padding: 20px 30px; }
+    
+    .hero-section { height: 30vh; /* Imagem hero um pouco menor em tablets */ }
+    
+    .gallery-container { margin: 30px auto; padding-top: 50px; }
+    
+    .quadro-card { gap: 30px; margin-bottom: 70px; }
+    
+    .quadro-info h2 { font-size: 28px; }
+    
+    .elegant-container { margin: 60px auto; padding: 0 30px; }
+    
+    .text-block h2 { font-size: 36px; }
+    
+    .contact-block .contact-methods { gap: 50px; }
+}
+
+/* --- Breakpoint 2: Telemóveis (até 768px) --- */
+/* --- MEDIA QUERY: TELEMÓVEL (768px) --- */
+@media (max-width: 768px) {
+    /* 1. Ajuste da Navbar */
+    nav { padding: 0 20px; height: 60px; }
+    
+    .logo-container { gap: 8px; }
+    .nav-logo-img { max-height: 30px; }
+    .logo { font-size: 14px !important; letter-spacing: 1px !important; }
+
+    /* 2. Menu Lateral (Sidebar) */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Escondido */
+        width: 75%;
+        height: 100vh;
+        background: var(--transparent-black);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s;
+        z-index: 999;
+    }
+
+    .nav-menu.active { right: 0; }
+
+    /* 3. Botão Hambúrguer */
+    .menu-toggle { display: flex; flex-direction: column; gap: 5px; cursor: pointer; }
+    .menu-toggle span { width: 25px; height: 2px; background: #fff; transition: 0.3s; }
+    .menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--transparent-black);
+        backdrop-filter: blur(4px);
+        display: none; /* Escondido por padrão */
+        z-index: 998; /* Abaixo da nav-menu, acima do conteúdo */
+    }
+
+    .menu-overlay.active {
+        display: block;
+    }
+
+    /* Transformação do Hambúrguer em X */
+    .menu-toggle.is-active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+    .menu-toggle.is-active span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.is-active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+    /* 4. HERO SECTION (AQUI ESTAVA O ERRO) */
+    .hero-section {
+        height: 50vh !important;
+        margin-top: 60px; /* Dá espaço para a nav não tapar a imagem */
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-image-wrapper {
+        position: relative !important; /* Em mobile, tiramos o 'fixed' para garantir que aparece */
+        height: 100%;
+        width: 100%;
+    }
+
+    .hero-image {
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* 5. QUADROS (Ajuste de tamanho e texto) */
+    .gallery-container { padding-top: 30px !important; }
+    
+    .quadro-card {
+        flex-direction: column !important;
+        margin-bottom: 60px;
+        gap: 15px;
+    }
+
+    .quadro-img { 
+        width: 90%; /* Diminui ligeiramente o tamanho da imagem no mobile */
+        margin: 0 auto; 
+    }
+
+    .quadro-info { padding: 10px; text-align: center; }
+    .quadro-info h2 { font-size: 22px; }
+}

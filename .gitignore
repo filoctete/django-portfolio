@@ -1,0 +1,46 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.env
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+.hypothesis/
+.pytest_cache/
+
+# --- Django ---
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+# Se quiseres versionar a pasta static mas não os ficheiros recolhidos:
+static_root/
+staticfiles/
+
+# --- Ficheiros de Configuração Sensível ---
+.env
+.flaskenv
+
+# --- VS Code / IDEs ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# --- Backup/Temporários ---
+*.bak
+*.tmp
+*.temp

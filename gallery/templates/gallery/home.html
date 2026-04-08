@@ -1,0 +1,32 @@
+{% extends 'gallery/base.html' %}
+{% load static %}
+{% block content %}
+<header class="hero-section">
+    <div class="hero-image-wrapper">
+        <img src="{% static 'images/presentation.jpeg' %}" alt="Apresentação Exclusiva" class="hero-image">
+    </div>
+    <div class="hero-content">
+        </div>
+</header>
+<div class="gallery-container">
+    {% for quadro in quadros %}
+    <div class="quadro-card reveal">
+        <div class="quadro-img">
+            <a href="{{ quadro.imagem.url }}" class="glightbox" data-gallery="portfolio" data-title="{{ quadro.titulo }}">
+                <img src="{{ quadro.imagem.url }}" alt="{{ quadro.titulo }}">
+            </a>
+        </div>
+        <div class="quadro-info">
+            <h2>{{ quadro.titulo }}</h2>
+            <p>{{ quadro.descricao }}</p>
+            <div class="quadro-meta">
+                <span class="date">{{ quadro.data_criacao|date:"F Y" }}</span>
+                <span class="price">€{{ quadro.preco }}</span>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p style="text-align: center; padding: 100px;">Nenhum quadro disponível de momento.</p>
+    {% endfor %}
+</div>
+{% endblock %}

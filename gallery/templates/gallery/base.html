@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Joaquim Lopes</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %}">
+    <link rel="manifest" href="{% static 'images/site.webmanifest' %}">
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="logo-container">
+            <img src="{% static 'images/android-chrome-192x192.png' %}" alt="Logo" class="nav-logo-img">
+            <div class="logo">Joaquim Lopes</div>
+        </div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    
+        <ul class="nav-menu">
+            <li><a href="{% url 'home' %}">Galeria</a></li>
+            <li><a href="{% url 'sobre' %}">Sobre</a></li>
+            <li><a href="{% url 'contacto' %}">Contacto</a></li>
+        </ul>
+    </nav>
+    
+    <div class="menu-overlay" id="overlay"></div>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+    <script>
+        // ... (GLightbox e Revelação mantêm-se iguais)
+
+        const menuBtn = document.querySelector('#mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+        const overlay = document.querySelector('#overlay');
+        const navbar = document.querySelector('#navbar');
+
+        // Função para Abrir o Menu
+        const openMenu = () => {
+            menuBtn.classList.add('is-active');
+            navMenu.classList.add('active');
+            overlay.classList.add('active');
+            // Adiciona um estado no histórico para o botão "Voltar" funcionar
+            history.pushState({menuOpen: true}, "");
+        };
+
+        // Função para Fechar o Menu
+        const closeMenu = () => {
+            menuBtn.classList.remove('is-active');
+            navMenu.classList.remove('active');
+            overlay.classList.remove('active');
+        };
+
+        // Eventos
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.contains('active') ? closeMenu() : openMenu();
+        });
+
+        overlay.addEventListener('click', closeMenu);
+        document.querySelectorAll('.nav-menu a').forEach(link => link.addEventListener('click', closeMenu));
+
+        // FECHAR COM O BOTÃO RETROCEDER DO TELEMÓVEL
+        window.addEventListener('popstate', (event) => {
+            if (navMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+        // Smart Navbar
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (!navMenu.classList.contains('active')) {
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    navbar.classList.add('nav-hidden');
+                } else {
+                    navbar.classList.remove('nav-hidden');
+                }
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, { passive: true });
+
+        // Inicializar os observadores
+        const lightbox = GLightbox({ selector: '.glightbox' });
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+                else entry.target.classList.remove('active'); 
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+    </script>
+</body>
+</html>
