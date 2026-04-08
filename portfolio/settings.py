@@ -15,7 +15,7 @@ import dj_database_url
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+print(f"DEBUG: POSTGRES_URL: {os.environ.get('POSTGRES_URL')}")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
@@ -89,7 +89,8 @@ DATABASES = {
         conn_health_checks=True,
     )
 }
-
+if DATABASES['default'].get('ENGINE') == 'django.db.backends.sqlite3':
+    print("AVISO: Variáveis de ambiente não encontradas. Usando SQLite local.")
 
 
 # Password validation
