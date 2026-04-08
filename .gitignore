@@ -24,7 +24,8 @@ coverage.xml
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-media/
+
+#media/ #Assim no vercel funciona
 # Se quiseres versionar a pasta static mas não os ficheiros recolhidos:
 static_root/
 staticfiles/
