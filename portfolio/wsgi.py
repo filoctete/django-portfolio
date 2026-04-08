@@ -16,3 +16,9 @@ application = get_wsgi_application()
 
 # ADICIONA ESTA LINHA:
 app = application
+
+from django.core.management import call_command
+try:
+    call_command('migrate', interactive=False)
+except Exception as e:
+    print(f"Erro na migração: {e}")

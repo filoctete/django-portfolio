@@ -83,8 +83,7 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        # Se estiveres no PC local (sem a variável POSTGRES_URL), ele usa SQLite
-        # Se estiveres no Vercel, ele usa o link do Neon que listaste acima
+        # Se POSTGRES_URL não existir (local), usa o SQLite
         default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
         conn_max_age=600
     )
