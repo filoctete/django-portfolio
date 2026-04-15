@@ -154,7 +154,3 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
-
-# Remove estas linhas antigas para não entrar em conflito com o novo dicionário STORAGES:
-# STATICFILES_STORAGE = ...
-# DEFAULT_FILE_STORAGE = ...
