@@ -124,16 +124,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-# --- CONFIGURAÇÃO DE FICHEIROS ESTÁTICOS E MEDIA ---
-
+# --- ESTÁTICOS (WhiteNoise / Vercel) ---
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# 1. Variáveis Legadas (Obrigatórias para a biblioteca Cloudinary não crashar)
+# Forçamos o WhiteNoise a ser o único a mandar nos estáticos
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
+# Localização da tua pasta static manual
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] if os.path.exists(os.path.join(BASE_DIR, 'static')) else []
+
+# --- MEDIA (Cloudinary) ---
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# 2. Configuração Moderna (Para o Django 5.0+)
+# O dicionário STORAGES (Novo no Django 4.2+) para garantir que o Django não se perde
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
@@ -143,13 +147,7 @@ STORAGES = {
     },
 }
 
-# 3. Localização dos teus ficheiros estáticos manuais
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] if os.path.exists(os.path.join(BASE_DIR, 'static')) else []
-
-# 4. WhiteNoise
-WHITENOISE_USE_FINDERS = True
-
-# --- CONFIGURAÇÃO CLOUDINARY ---
+# Configurações do Cloudinary
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
     'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
