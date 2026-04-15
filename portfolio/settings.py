@@ -124,33 +124,34 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
+# --- CONFIGURAÇÃO DE FICHEIROS ESTÁTICOS E MEDIA ---
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Configurações do Cloudinary (usa variáveis de ambiente)
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
-    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
-}
+# 1. Variáveis Legadas (Obrigatórias para a biblioteca Cloudinary não crashar)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# Define o Cloudinary como o motor de armazenamento de ficheiros de media
-#DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-
-# 1. Adiciona esta variável para ajudar o WhiteNoise
-WHITENOISE_USE_FINDERS = True
-
-# 2. Garante que os diretórios de estáticos estão mapeados (se tiveres uma pasta static na raiz)
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] if os.path.exists(os.path.join(BASE_DIR, 'static')) else []
-
-# 3. Muda o STORAGE para a versão mais recente e compatível com WhiteNoise 6.0+
+# 2. Configuração Moderna (Para o Django 5.0+)
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
+}
+
+# 3. Localização dos teus ficheiros estáticos manuais
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] if os.path.exists(os.path.join(BASE_DIR, 'static')) else []
+
+# 4. WhiteNoise
+WHITENOISE_USE_FINDERS = True
+
+# --- CONFIGURAÇÃO CLOUDINARY ---
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
 }

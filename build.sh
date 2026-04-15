@@ -3,7 +3,7 @@ echo "--- INSTALLING DEPENDENCIES ---"
 python -m pip install -r requirements.txt
 
 echo "--- BUILDING STATIC FILES ---"
-# O --no-post-process é a rede de segurança final
+# O prefixo serve para garantir que ele usa o storage local durante o build
 python manage.py collectstatic --noinput --clear --no-post-process
 
 echo "--- RUNNING MIGRATIONS ---"
