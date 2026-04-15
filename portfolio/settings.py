@@ -126,7 +126,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Configurações do Cloudinary (usa variáveis de ambiente)
 CLOUDINARY_STORAGE = {
@@ -136,15 +136,14 @@ CLOUDINARY_STORAGE = {
 }
 
 # Define o Cloudinary como o motor de armazenamento de ficheiros de media
-#DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 # 1. Adiciona esta variável para ajudar o WhiteNoise
 WHITENOISE_USE_FINDERS = True
 
 # 2. Garante que os diretórios de estáticos estão mapeados (se tiveres uma pasta static na raiz)
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] if os.path.exists(os.path.join(BASE_DIR, 'static')) else []
 
 # 3. Muda o STORAGE para a versão mais recente e compatível com WhiteNoise 6.0+
 STORAGES = {
