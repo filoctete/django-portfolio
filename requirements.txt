@@ -3,3 +3,5 @@ whitenoise==6.12.0
 dj-database-url
 psycopg2-binary
 Pillow
+django-cloudinary-storage
+cloudinary
