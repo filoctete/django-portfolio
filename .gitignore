@@ -27,7 +27,7 @@ db.sqlite3-journal
 
 #media/ #Assim no vercel funciona
 # Se quiseres versionar a pasta static mas não os ficheiros recolhidos:
-static_root/
+#static_root/
 #staticfiles/
 
 # --- Ficheiros de Configuração Sensível ---
