@@ -1,12 +1,5 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "portfolio/wsgi.py",
-      "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.12" }
-    }
-  ],
   "routes": [
     {
       "src": "/static/(.*)",
@@ -18,6 +11,7 @@
     }
   ],
   "env": {
-    "DISABLE_COLLECTSTATIC": "1"
+    "DISABLE_COLLECTSTATIC": "1",
+    "PYTHON_VERSION": "3.12"
   }
 }

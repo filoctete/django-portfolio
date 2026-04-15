@@ -126,8 +126,14 @@ USE_TZ = True
 
 # --- ESTÁTICOS (WhiteNoise / Vercel) ---
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# settings.py
 
+WHITENOISE_USE_FINDERS = True
+# Adiciona isto: impede o erro se a pasta estiver vazia ou a ser criada
+WHITENOISE_KEEP_ONLY_HASHED_FILES = True 
+
+# Garante que o STATIC_ROOT aponta para 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Forçamos o WhiteNoise a ser o único a mandar nos estáticos
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 

@@ -4,7 +4,8 @@ echo "--- INSTALLING DEPENDENCIES ---"
 python -m pip install -r requirements.txt
 
 echo "--- BUILDING STATIC FILES ---"
-# O --no-post-process evita que o WhiteNoise tente comprimir o que não deve durante o build
+# Criar a pasta manualmente por segurança
+mkdir -p staticfiles
 python manage.py collectstatic --noinput --clear --no-post-process
 
 echo "--- RUNNING MIGRATIONS ---"
