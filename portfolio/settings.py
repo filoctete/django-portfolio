@@ -139,7 +139,7 @@ STATICFILES_DIRS = [
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # O dicionário STORAGES (Novo no Django 4.2+) para garantir que o Django não se perde
-STORAGES = {
+'''STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
@@ -147,7 +147,7 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
-
+'''
 # Configurações do Cloudinary
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
