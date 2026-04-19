@@ -135,12 +135,12 @@ WHITENOISE_KEEP_ONLY_HASHED_FILES = True
 # Garante que o STATIC_ROOT aponta para 'staticfiles'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Forçamos o WhiteNoise a ser o único a mandar nos estáticos
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # Localização da tua pasta static manual
-#STATICFILES_DIRS = [
-#    os.path.join(BASE_DIR, 'static'),
-#]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 # --- MEDIA (Cloudinary) ---
 #DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
@@ -150,7 +150,7 @@ STORAGES = {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
     },
 }
 
