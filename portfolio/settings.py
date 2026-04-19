@@ -138,13 +138,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # Localização da tua pasta static manual
-STATICFILES_DIRS = [
+'''STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-]
+]'''
 # --- MEDIA (Cloudinary) ---
 #DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # O dicionário STORAGES (Novo no Django 4.2+) para garantir que o Django não se perde
+# MANTÉM ESTE BLOCO (é o correto para o Django 6.0)
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
@@ -153,6 +154,9 @@ STORAGES = {
         "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
     },
 }
+
+# ADICIONA ESTA LINHA (para enganar o django-cloudinary-storage)
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 # Configurações do Cloudinary
 CLOUDINARY_STORAGE = {
