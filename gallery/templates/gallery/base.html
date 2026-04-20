@@ -19,10 +19,12 @@
 <body>
 
     <nav id="navbar">
-        <div class="logo-container">
-            <img src="{% static 'images/android-chrome-192x192.png' %}" alt="Logo" class="nav-logo-img">
-            <div class="logo">Arte Fénix</div>
-        </div>
+        <a href="{% url 'home' %}" style="text-decoration: none; color: inherit;">
+            <div class="logo-container">
+                <img src="{% static 'images/android-chrome-192x192.png' %}" alt="Logo" class="nav-logo-img">
+                <div class="logo">Arte Fénix</div>
+            </div>
+        </a>
         
         <div class="menu-toggle" id="mobile-menu">
             <span></span>
