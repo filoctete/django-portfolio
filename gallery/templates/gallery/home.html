@@ -12,7 +12,7 @@
     {% for quadro in quadros %}
     <div class="quadro-card reveal">
         <div class="quadro-img">
-            <a href="{{ quadro.imagem.url }}" class="glightbox" data-gallery="portfolio" data-title="{{ quadro.titulo }}">
+            <a href="{{ quadro.imagem.url }}" class="glightbox" data-gallery="portfolio" data-title="{{ quadro.titulo }}" data-type="image">
                 <img src="{{ quadro.imagem.url }}" alt="{{ quadro.titulo }}">
             </a>
         </div>

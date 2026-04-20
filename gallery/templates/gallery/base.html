@@ -99,7 +99,13 @@
         }, { passive: true });
 
         // Inicializar os observadores
-        const lightbox = GLightbox({ selector: '.glightbox' });
+        // Inicializar os observadores
+        const lightbox = GLightbox({ 
+            selector: '.glightbox',
+            touchNavigation: true, // Facilita o deslizar no telemóvel
+            zoomable: false,       // <-- Isto desliga o zoom automático que está a cortar a imagem
+            draggable: true        // Permite arrastar para fechar
+        });
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) entry.target.classList.add('active');

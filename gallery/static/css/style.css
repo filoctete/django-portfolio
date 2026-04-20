@@ -357,6 +357,11 @@ nav ul li a:hover { color: var(--accent); }
         transition: 0.5s;
         z-index: 999;
     }
+    .gslide-image img {
+        max-height: 85vh !important; /* Dá uma margem em cima e em baixo */
+        width: 100% !important;
+        object-fit: contain !important; /* Força a imagem a caber inteira no ecrã sem cortar */
+    }
 
     .nav-menu.active { right: 0; }
 
