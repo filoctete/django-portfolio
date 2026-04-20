@@ -99,13 +99,12 @@
         }, { passive: true });
 
         // Inicializar os observadores
-        // Inicializar os observadores
         const lightbox = GLightbox({ 
             selector: '.glightbox',
-            touchNavigation: true, // Facilita o deslizar no telemóvel
-            zoomable: false,       // <-- Isto desliga o zoom automático que está a cortar a imagem
-            draggable: true        // Permite arrastar para fechar
-        });
+            touchNavigation: true, 
+            zoomable: true,       // <-- Mudar para true para ativar a lupa e o zoom
+            draggable: true       
+        })
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
