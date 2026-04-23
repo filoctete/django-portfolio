@@ -244,14 +244,14 @@ nav ul li a:hover { color: var(--accent); }
     position: relative;
     width: 100%;
     /* 85vh dá uma altura grandiosa, mas deixa um bocadinho do fundo aparecer para convidar a fazer scroll */
-    height: 85vh; 
+    height: 70vh; 
     overflow: hidden;
     margin-top: 0; 
 }
 
 .hero-image-wrapper {
     width: 100%;
-    height: 85vh; /* TEM DE SER EXATAMENTE IGUAL À .hero-section PARA A SOMBRA ALINHAR */
+    height: 70vh; /* TEM DE SER EXATAMENTE IGUAL À .hero-section PARA A SOMBRA ALINHAR */
     position: fixed; 
     top: 0;
     left: 0;
@@ -398,7 +398,7 @@ nav ul li a:hover { color: var(--accent); }
     .hero-image {
         width: 100%;
         height: auto; /* Deixa a altura ser definida pela imagem */
-        max-height: 80vh;
+        max-height: 70vh;
         object-fit: contain; /* Garante que a imagem aparece toda sem cortes */
         object-position: center center;
     }
