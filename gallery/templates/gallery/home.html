@@ -1,5 +1,6 @@
 {% extends 'gallery/base.html' %}
 {% load static %}
+{% load gallery_extras %}
 {% block content %}
 <header class="hero-section">
     <div class="hero-image-wrapper">
@@ -9,6 +10,10 @@
         </div>
 </header>
 <div class="gallery-container">
+    <div class="gallery-intro reveal">
+        <h1>Arte Fénix</h1>
+        <p>Uma galeria de Joaquim Lopes</p>
+    </div>
     {% for quadro in quadros %}
     <div class="quadro-card reveal">
         <div class="quadro-img">
@@ -17,11 +22,11 @@
             </a>
         </div>
         <div class="quadro-info">
-            <h2>{{ quadro.titulo }}</h2>
+            <h2>{{ quadro.titulo|style_title }}</h2>
             <p>{{ quadro.descricao }}</p>
             <div class="quadro-meta">
-                <span class="date">{{ quadro.data_criacao|date:"F Y" }}</span>
                 <span class="price">€{{ quadro.preco }}</span>
+                <span class="date" hidden>{{ quadro.data_criacao|date:"F Y" }}</span>
             </div>
         </div>
     </div>
