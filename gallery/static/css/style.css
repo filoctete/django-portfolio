@@ -403,16 +403,19 @@ nav ul li a:hover { color: var(--accent); }
     }
 
     .hero-image-wrapper {
-        position: relative !important; /* Em mobile, tiramos o 'fixed' para garantir que aparece */
-        height: 100%;
         width: 100%;
+        height: 55vh; /* Tem de ser exatamente igual à altura da .hero-section */
+        position: fixed; 
+        top: 0;
+        left: 0;
+        z-index: -1;
+        background-color: var(--bg-color); /* Fundo igual ao site para disfarçar as barras laterais que vão surgir nos monitores ultra-largos */
     }
-
+    
     .hero-image {
         width: 100%;
-        height: auto; /* Deixa a altura ser definida pela imagem */
-        max-height: 80vh;
-        object-fit: contain; /* Garante que a imagem aparece toda sem cortes */
+        height: 100%; /* Força a imagem a respeitar a altura do wrapper */
+        object-fit: contain; /* Como está a 100% de largura e altura, o contain vai encaixar a imagem perfeitamente sem cortar */
         object-position: center center;
     }
 
