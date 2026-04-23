@@ -381,28 +381,43 @@ nav ul li a:hover { color: var(--accent); }
     .menu-toggle.is-active span:nth-child(3) {
         transform: translateY(-7px) rotate(-45deg);
     }
-    /* 4. HERO SECTION (AQUI ESTAVA O ERRO) */
+    /* 4. HERO SECTION (AJUSTADO PARA MOBILE COM SOMBRA) */
     .hero-section {
-        height: 50vh !important;
-        margin-top: 60px; /* Dá espaço para a nav não tapar a imagem */
+        height: 60vh !important; /* Um pouco mais alto no mobile para dar respiro à imagem */
+        margin-top: 60px; /* Compensa a altura da barra de navegação */
         position: relative;
+        overflow: hidden;
         z-index: 1;
     }
 
     .hero-image-wrapper {
-        position: relative !important; /* Em mobile, tiramos o 'fixed' para garantir que aparece */
+        position: absolute !important; /* Usamos absolute em vez de relative para a sombra ficar facilmente por cima */
+        top: 0;
+        left: 0;
         height: 100%;
         width: 100%;
+        z-index: 0; /* Fica no fundo */
     }
 
     .hero-image {
+        height: 100%;
         width: 100%;
-        height: auto; /* Deixa a altura ser definida pela imagem */
-        max-height: 70vh;
-        object-fit: contain; /* Garante que a imagem aparece toda sem cortes */
-        object-position: center center;
+        object-fit: cover;
+        object-position: center 25%; /* Mantém o foco no rosto e braço, tal como no desktop */
     }
 
+    /* Força a sombra a aparecer por cima da imagem no mobile */
+    .hero-section::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50%; /* No telemóvel uma sombra ligeiramente mais alta (50%) funde melhor a imagem com o fundo negro */
+        background: linear-gradient(to bottom, rgba(20, 20, 20, 0) 0%, var(--bg-color) 100%);
+        pointer-events: none;
+        z-index: 2 !important; /* O !important garante que fica sempre por cima da fotografia */
+    }
     /* 5. QUADROS (Ajuste de tamanho e texto) */
     .gallery-container { padding-top: 30px !important; }
     
