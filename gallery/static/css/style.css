@@ -239,41 +239,45 @@ nav ul li a:hover { color: var(--accent); }
 }
 
 /* --- Hero Section (Efeito Luxo Bugatti) --- */
+/* --- Hero Section (Efeito Luxo) --- */
 .hero-section {
     position: relative;
     width: 100%;
-    
-    /* Ocupa quase toda a altura da viewport, exceto a navbar */
-    height: 55vh; 
+    /* 85vh dá uma altura grandiosa, mas deixa um bocadinho do fundo aparecer para convidar a fazer scroll */
+    height: 85vh; 
     overflow: hidden;
-    /* Adiciona uma margem negativa para "subir" e ficar por trás da navbar sutilmente, se desejado */
-    margin-top: -1px; 
+    margin-top: 0; 
 }
 
 .hero-image-wrapper {
     width: 100%;
-    height: 55vh; /* Tem de ser exatamente igual à altura da .hero-section */
+    height: 85vh; /* TEM DE SER EXATAMENTE IGUAL À .hero-section PARA A SOMBRA ALINHAR */
     position: fixed; 
     top: 0;
     left: 0;
-    z-index: -1;
-    background-color: var(--bg-color); /* Fundo igual ao site para disfarçar as barras laterais que vão surgir nos monitores ultra-largos */
+    z-index: -1; /* Mantém o efeito parallax fixo ao fundo */
+    background-color: var(--bg-color); 
 }
 
 .hero-image {
     width: 100%;
-    height: 100%; /* Força a imagem a respeitar a altura do wrapper */
-    object-fit: contain; /* Como está a 100% de largura e altura, o contain vai encaixar a imagem perfeitamente sem cortar */
-    object-position: center center;
+    height: 100%; 
+    object-fit: cover; /* Preenche a largura e altura toda do wrapper sem deixar barras vazias */
+    /* O SEGREDO: Foca a imagem nos 25% a contar do topo. Assim corta o teto extra e garante que a cabeça e o braço ficam no centro das atenções! */
+    object-position: center 25%; 
 }
 
-.hero-content {
-    position: relative;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1; /* Para ficar por cima da imagem wrapper */
+/* --- Sombra Correta na Hero Section --- */
+.hero-section::after {
+    content: "";
+    position: absolute;
+    bottom: 0; /* Agora sim, a sombra vai colar-se perfeitamente ao fundo da imagem */
+    left: 0;
+    width: 100%;
+    height: 40%; /* Altura do degradé */
+    background: linear-gradient(to bottom, rgba(20, 20, 20, 0) 0%, var(--bg-color) 100%);
+    pointer-events: none;
+    z-index: 1;
 }
 /* --- Animação de Revelação (Fade-in) --- */
 
@@ -292,20 +296,6 @@ nav ul li a:hover { color: var(--accent); }
     visibility: visible;
 }
 
-/* --- Sombra Correta na Hero Section --- */
-.hero-section::after {
-    content: "";
-    position: absolute;
-    bottom: 0; /* Cola a sombra ao fundo da secção e não do ecrã */
-    left: 0;
-    width: 100%;
-    height: 40%; /* Ocupa apenas a parte de baixo da imagem */
-    
-    /* Desvanece do transparente para a cor de fundo do teu site */
-    background: linear-gradient(to bottom, rgba(5, 5, 5, 0) 0%, var(--bg-color) 100%);
-    pointer-events: none;
-    z-index: 1;
-}
 
 /* =========================================================
    CSS RESPONSIVO (Tablets e Telemóveis)
