@@ -1,0 +1,29 @@
+{% extends 'gallery/base.html' %}
+{% load static %}
+{% load gallery_extras %}
+
+{% block content %}
+<div class="gallery-container">
+    <div class="gallery-intro reveal">
+        <h1>Peças</h1>
+        <p>Coleção exclusiva de Joaquim Lopes</p>
+    </div>
+
+    {% for peca in pecas %}
+    <div class="quadro-card reveal">
+        <div class="quadro-img">
+            <a href="{{ peca.imagem.url }}" class="glightbox" data-gallery="pecas" data-title="{{ peca.titulo }}" data-type="image">
+                <img src="{{ peca.imagem.url }}" alt="{{ peca.titulo }}">
+            </a>
+        </div>
+        <div class="quadro-info">
+            <h2>{{ peca.titulo|style_title }}</h2>
+            <p>{{ peca.descricao }}</p>
+            <div class="quadro-meta">
+                <span class="price">{{ peca.preco }} €</span>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
