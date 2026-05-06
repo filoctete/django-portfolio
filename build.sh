@@ -4,11 +4,11 @@ echo "--- INSTALLING DEPENDENCIES ---"
 python -m pip install -r requirements.txt
 
 echo "--- BUILDING STATIC FILES ---"
-# Criar a pasta manualmente por segurança
 mkdir -p staticfiles
 python manage.py collectstatic --noinput --clear --no-post-process
 
 echo "--- RUNNING MIGRATIONS ---"
+python manage.py makemigrations --noinput
 python manage.py migrate --noinput
 
 echo "--- CREATING SUPERUSER ---"
