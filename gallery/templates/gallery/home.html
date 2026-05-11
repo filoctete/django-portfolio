@@ -25,8 +25,12 @@
             <h2>{{ quadro.titulo|style_title }}</h2>
             <p>{{ quadro.descricao }}</p>
             <div class="quadro-meta">
-                <span class="price">€{{ quadro.preco }}</span>
-                <span class="date" hidden>{{ quadro.data_criacao|date:"F Y" }}</span>
+                <span class="date">{{ quadro.data_criacao|date:"F Y" }}</span>
+                {% if quadro.preco > 0 %}
+                    <span class="price">€{{ quadro.preco }}</span>
+                {% else %}
+                    <span class="price" style="font-size: 0.9em; font-style: italic;">(Vendido)</span>
+                {% endif %}
             </div>
         </div>
     </div>

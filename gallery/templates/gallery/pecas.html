@@ -6,7 +6,7 @@
 <div class="gallery-container">
     <div class="gallery-intro reveal">
         <h1>Peças</h1>
-        <p>Coleção exclusiva de Joaquim Lopes</p>
+        <p>Coleção exclusiva de Joaquim Lopes & Cristina Oliveira</p>
     </div>
 
     {% for peca in pecas %}
@@ -20,7 +20,11 @@
             <h2>{{ peca.titulo|style_title }}</h2>
             <p>{{ peca.descricao }}</p>
             <div class="quadro-meta">
-                <span class="price">{{ peca.preco }} €</span>
+                {% if peca.preco > 0 %}
+                    <span class="price">{{ peca.preco }} €</span>
+                {% else %}
+                    <span class="price" style="font-size: 0.9em; font-style: italic;">(Vendido)</span>
+                {% endif %}
             </div>
         </div>
     </div>
