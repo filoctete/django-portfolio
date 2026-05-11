@@ -17,5 +17,5 @@ class Peca(models.Model):
     preco = models.DecimalField(max_digits=10, decimal_places=2, help_text="Ex: 1500.00")
     data_criacao = models.DateTimeField(auto_now_add=True)
 
-    def __clstr__(self):
+    def __str__(self):
         return self.titulo
