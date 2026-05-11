@@ -173,7 +173,9 @@ nav ul li a:hover { color: var(--accent); }
 .text-block {
     text-align: center;
     border-left: 1px solid #222; /* Uma linha muito sutil */
+    border-right: 1px solid #222; /* Uma linha muito sutil */
     padding-left: 50px;
+    padding-right: 50px;
 }
 
 .text-block h3 {
@@ -353,7 +355,8 @@ nav ul li a:hover { color: var(--accent); }
     .nav-menu.active { right: 0; }
 
     /* 3. Botão Hambúrguer */
-    .menu-toggle { display: flex; flex-direction: column; gap: 5px; cursor: pointer; }
+    .menu-toggle { display: flex; flex-direction: column; gap: 5px; cursor: pointer; position: relative;
+        z-index: 1001; }
     .menu-toggle span { width: 25px; height: 2px; background: #fff; transition: 0.3s; }
     .menu-overlay {
         position: fixed;
