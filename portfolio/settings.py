@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-eglz+cgr9oq3^phjb+hlxm0zbwi1_6tx(0pd=70c&*=2$y49gi
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['.vercel.app', 'localhost', '127.0.0.1','arte-fenix.com', 'www.arte-fenix.com', 'django-portfolio-rho.vercel.app',]
 
 
 # Application definition
